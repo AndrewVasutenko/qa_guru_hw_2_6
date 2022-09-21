@@ -5,6 +5,7 @@ from zipfile import ZipFile
 from PyPDF2 import PdfReader
 from openpyxl import load_workbook
 
+# Создаем архив с файлами
 def test_create_zip():
     zip = zipfile.ZipFile(os.path.abspath('zip.zip'), 'w')
     zip.write('./resources/xlsx.xlsx')
@@ -12,6 +13,7 @@ def test_create_zip():
     zip.write('./resources/pdf.pdf')
     zip.close()
 
+# Проверяем информацию в файлах
 def test_check_pdf():
     with zipfile.ZipFile(os.path.abspath("./zip.zip")) as zip1:
         with zip1.open('resources/pdf.pdf') as pdfFile:
